@@ -1,0 +1,43 @@
+{
+   "name": "Butter",
+   "version": "1.0.1",
+   "description": "Wipes UTM codes, tracking tokens, personal info, and other unnecessary crap from URLs with the click of a butt-on.",
+   "permissions": [
+      "activeTab", "storage", "tabs"   
+   ],
+      "host_permissions": [
+      "<all_urls>"
+   ],
+   "author": "awztech",
+   "icons":{  
+      "38": "img/disabled_icon-38.png", 
+      "128": "img/enabled_icon.png"   
+   },
+   "content_scripts": [{
+     "matches": ["<all_urls>"],
+     "js" : [ 
+        "./libs/jquery-3.4.1.min.js", 
+        "./libs/jquery-3.6.0.min.js",
+        "./js/content.script.js"
+      ],
+     "css" : ["css/snackbar.css"],
+     "run_at": "document_end",
+      "all_frames": false
+   }],
+   "action":{  
+      "default_icon":"img/disabled_icon-38.png",
+      "default_title":"Butter"
+   },
+   "manifest_version": 3,
+   "background": {
+      "service_worker": "js/background.js"
+   },  
+   "web_accessible_resources": [{
+    "resources": [
+      "img/*",
+      "libs/jquery-3.6.0.min.js",
+      "css/snackbar.css"
+    ],
+    "matches": ["<all_urls>"]
+  }]
+ }
